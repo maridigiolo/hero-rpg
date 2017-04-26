@@ -35,7 +35,7 @@ class Hero(Character):
 #Step 2  -  Hero attacks goblin
     def attack(self, goblin):
         # goblin.health -= self.power
-        super().attack(hero)
+        super().attack(goblin)
         print("You do {} damage to the goblin.".format(self.power))
         if goblin.health <= 0:
             print("The goblin is dead.")
@@ -56,7 +56,7 @@ class Goblin(Character):
 
     def attack(self, hero):
         # hero.health -= goblin.power
-        super().attack(goblin)
+        super().attack(hero)
         print("The goblin does {} damage to you.".format(goblin.power))
         if hero.health <= 0:
             print("You are dead.")
