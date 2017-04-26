@@ -8,11 +8,17 @@ In this simple RPG game, the hero fights the goblin. He has the options to:
 3. flee
 
 """
-#Step 1
-class Hero:
+#Step 6
+class Character:
     def __init__(self, health, power):
         self.health = health
         self.power = power
+
+#Step 1
+class Hero(Character):
+    # def __init__(self, health, power):
+    #     self.health = health
+    #     self.power = power
 
 #Step 2  -  Hero attacks goblin
     def attack(self, goblin):
@@ -30,10 +36,10 @@ class Hero:
 
 
 #Step 3  -  Hero attacks goblin
-class Goblin:
-    def __init__(self, health, power):
-        self.health = health
-        self.power = power
+class Goblin(Character):
+    # def __init__(self, health, power):
+    #     self.health = health
+    #     self.power = power
 
     def attack(self, hero):
         hero.health -= goblin.power
