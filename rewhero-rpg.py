@@ -10,13 +10,21 @@ In this simple RPG game, the hero fights the goblin. He has the options to:
 """
 #Step 6
 class Character:
-    def __init__(self, health, power):
+    def __init__(self,name, health, power):
+        self.name = name
         self.health = health
         self.power = power
 #Step 7
     def alive(self):
         if self.health > 0:
             return True
+#Step 7 - Challenge
+    def attack(self, enemy):
+        enemy.health -= self.power
+
+
+    def print_status(self):
+        print("{} have {} health and {} power.".format(self.name, self.health, self.power))
 
 #Step 1
 class Hero(Character):
@@ -26,7 +34,8 @@ class Hero(Character):
 
 #Step 2  -  Hero attacks goblin
     def attack(self, goblin):
-        goblin.health -= self.power
+        # goblin.health -= self.power
+        super().attack(hero)
         print("You do {} damage to the goblin.".format(self.power))
         if goblin.health <= 0:
             print("The goblin is dead.")
@@ -35,8 +44,8 @@ class Hero(Character):
     #     if self.health > 0:
     #         return True
 
-    def print_status(self):
-        print("You have {} health and {} power.".format(self.health, self.power))
+    # def print_status(self):
+    #     print("You have {} health and {} power.".format(self.health, self.power))
 
 
 #Step 3  -  Hero attacks goblin
@@ -46,7 +55,8 @@ class Goblin(Character):
     #     self.power = power
 
     def attack(self, hero):
-        hero.health -= goblin.power
+        # hero.health -= goblin.power
+        super().attack(goblin)
         print("The goblin does {} damage to you.".format(goblin.power))
         if hero.health <= 0:
             print("You are dead.")
@@ -55,11 +65,11 @@ class Goblin(Character):
     #     if self.health > 0:
     #         return True
 
-    def print_status(self):
-        print("You have {} health and {} power.".format(self.health, self.power))
+    # def print_status(self):
+    #     print("You have {} health and {} power.".format(self.health, self.power))
 
-hero = Hero(10,5)
-goblin = Goblin(6,2)
+hero = Hero('You', 10, 5)
+goblin = Goblin('Goblin', 6, 2)
 #----
 #Original
 def main():
@@ -109,6 +119,3 @@ def main():
 
 if __name__ == "__main__":
   main()
-
-  Comment to be different
-  
