@@ -16,25 +16,22 @@ class Hero:
 
 #Step 2  -  Hero attacks goblin
     def attack(self, goblin):
-        inpt = input()
-        if inpt == "1":
-            goblin.health -= self.power
-            print("You do {} damage to the goblin.".format(self.power))
-            if goblin.health <= 0:
-                print("The goblin is dead.")
-            elif inpt == "2":
-                pass
-            elif inpt == "3":
-                print("Goodbye.")
-                # break
-            else:
-                print("Invalid inpt {}".format(inpt))
+        goblin.health -= self.power
+        print("You do {} damage to the goblin.".format(self.power))
+        if goblin.health <= 0:
+            print("The goblin is dead.")
 
 
 class Goblin:
     def __init__(self, health, power):
         self.health = health
         self.power = power
+
+    def attack(self, hero):
+        hero.health -= goblin.power
+        print("The goblin does {} damage to you.".format(goblin.power))
+        if hero.health <= 0:
+            print("You are dead.")
 
 hero = Hero(10,5)
 goblin = Goblin(6,2)
@@ -55,25 +52,26 @@ def main():
         print("2. do nothing")
         print("3. flee")
         print("> ", end=' ')
-        hero.attack(goblin)
-    #     inpt = input()
-    #     if inpt == "1":
-    #         # Hero attacks goblin
-    #         goblin_health -= hero_power
+        inpt = input()
+        if inpt == "1":
+        # Hero attacks goblin
+            hero.attack(goblin)
+            # goblin_health -= hero_power
     #         print("You do {} damage to the goblin.".format(hero_power))
     #         if goblin_health <= 0:
     #             print("The goblin is dead.")
-    #     elif inpt == "2":
-    #         pass
-    #     elif inpt == "3":
-    #         print("Goodbye.")
-    #         break
-    #     else:
-    #         print("Invalid inpt {}".format(inpt))
+        elif inpt == "2":
+            pass
+        elif inpt == "3":
+            print("Goodbye.")
+            break
+        else:
+            print("Invalid inpt {}".format(inpt))
 
-        # if goblin_health > 0:
+        if goblin.health > 0:
         #     # Goblin attacks hero
-        #     self.health -= enemy.power
+            goblin.attack(hero)
+        #     hero.health -= goblin.power
         #     print("The goblin does {} damage to you.".format(goblin_power))
         #     if hero_health <= 0:
         #         print("You are dead.")
